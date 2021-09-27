@@ -1,0 +1,1 @@
+alertagpu: python "main.py"
