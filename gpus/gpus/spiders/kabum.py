@@ -64,6 +64,7 @@ class KabumSpider(scrapy.Spider):
                             VALUES (?,?,?,?,?,?,?)
                             """, data)
                 conn.commit()
+                self.promocao(data[0], produto['preco'], precopix = False)
             elif produto['preco'] > data[2] :
                 cursor.execute(f"""UPDATE gpus SET preco='{data[2]}'
                          WHERE nome='{data[0]}'""")
