@@ -70,13 +70,13 @@ class KabumSpider(scrapy.Spider):
                          WHERE nome='{data[0]}'""")
                 conn.commit()
                 self.promocao(data[0], produto['preco'], precopix = False)
-                conn.close()
             elif produto['preco_desconto'] > data[3]:
                 cursor.execute(f"""UPDATE gpus SET preco_desconto='{data[3]}'
                              WHERE nome='{data[0]}'""")
                 conn.commit()
                 self.promocao(data[0], produto['preco_desconto'], precopix = True)
-                conn.close()
+            conn.close()
+            self.promocao(data[0], produto['preco'], precopix=False)
 
 
     def searchdata(self,term_search):
